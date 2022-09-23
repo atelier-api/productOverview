@@ -4,3 +4,8 @@ package-lock.json
 
 README.md
 
+.env
+
+*.pem
+
+.DS_Store

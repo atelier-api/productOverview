@@ -1,12 +1,17 @@
 const express = require('express');
 require("dotenv").config();
+const app = require('./routes');
 
-const controller = require('./controllers/controllers');
-const authentication = require('./middleware/authentication');
-
-const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
+const start = (port) => {
+  try {
+    app.listen(PORT);
+    console.log(`Server listening at http://localhost:${PORT}`);
+  } catch (err) {
+    console.log(err);
+    process.exit();
+  }
+}
 
-app.get()
+start(PORT);
