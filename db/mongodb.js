@@ -2,51 +2,34 @@ const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/SDC');
 
-const finalProductSchema = new mongoose.Schema({
+const productSchema = new mongoose.Schema({
   id: Number,
   name: String,
   slogan: String,
   description: String,
   category: String,
   default_price: String,
-  features: [{feature: String, value: String}],
-  styles: [{
-    style_id: Number,
-    name: String,
-    original_price: String,
-    sale_price: String,
-    default: Boolean,
-    photos: [{thumbnail_url: String, url: String}],
-    skus: [{size: String, quantity: Number}]
-  }]
-});
-
-const FinalProduct = mongoose.model('finalProduct', finalProductSchema);
-
-const productSchema = new mongoose.Schema({
-  _id: Number,
-  name: String,
-  slogan: String,
-  description: String,
-  category: String,
-  default_price: String
+  features: [{ type: mongoose.Schema.Types.ObjectId, ref: 'features'}]
+  styles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'styles'}]
 });
 
 const Product = mongoose.model('product', productSchema);
 
 const styleSchema = new mongoose.Schema({
-  _id: Number,
+  id: Number,
   productId: Number,
   name: String,
   sale_price: String,
   original_price: String,
-  default_style: Boolean
+  default_style: Boolean,
+  photos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'photos'}],
+  skus: [{ type: mongoose.Schema.Types.ObjectId, ref: 'skus'}]
 })
 
 const Style = mongoose.model('style', styleSchema);
 
 const skuSchema = new mongoose.Schema({
-  _id: Number,
+  id: Number,
   styleId: Number,
   size: String,
   quantity: Number
@@ -55,7 +38,7 @@ const skuSchema = new mongoose.Schema({
 const Sku = mongoose.model('sku', skuSchema);
 
 const featureSchema = new mongoose.Schema({
-  _id: Number,
+  id: Number,
   product_id: Number,
   feature: String,
   value: String
@@ -64,7 +47,7 @@ const featureSchema = new mongoose.Schema({
 const Feature = mongoose.model('feature', featureSchema);
 
 const photoSchema = new mongoose.Schema({
-  _id: Number,
+  id: Number,
   styleId: Number,
   url: String,
   thumbnail_url: String
