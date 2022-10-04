@@ -9,8 +9,8 @@ const productSchema = new mongoose.Schema({
   description: String,
   category: String,
   default_price: String,
-  features: [{ type: mongoose.Schema.Types.ObjectId, ref: 'features'}]
-  styles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'styles'}]
+  features: [Object],
+  styles: [Object]
 });
 
 const Product = mongoose.model('product', productSchema);
@@ -22,42 +22,41 @@ const styleSchema = new mongoose.Schema({
   sale_price: String,
   original_price: String,
   default_style: Boolean,
-  photos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'photos'}],
-  skus: [{ type: mongoose.Schema.Types.ObjectId, ref: 'skus'}]
+  skus: [Object],
+  photos: [Object]
 })
 
 const Style = mongoose.model('style', styleSchema);
 
-const skuSchema = new mongoose.Schema({
-  id: Number,
-  styleId: Number,
-  size: String,
-  quantity: Number
-})
+// const skuSchema = new mongoose.Schema({
+//   id: String,
+//   styleId: Number,
+//   size: String,
+//   quantity: Number
+// })
 
-const Sku = mongoose.model('sku', skuSchema);
+// const Sku = mongoose.model('sku', skuSchema);
 
-const featureSchema = new mongoose.Schema({
-  id: Number,
-  product_id: Number,
-  feature: String,
-  value: String
-});
+// const featureSchema = new mongoose.Schema({
+//   id: Number,
+//   product_id: Number,
+//   feature: String,
+//   value: String
+// });
 
-const Feature = mongoose.model('feature', featureSchema);
+// const Feature = mongoose.model('feature', featureSchema);
 
-const photoSchema = new mongoose.Schema({
-  id: Number,
-  styleId: Number,
-  url: String,
-  thumbnail_url: String
-});
+// const photoSchema = new mongoose.Schema({
+//   id: Number,
+//   styleId: Number,
+//   url: String,
+//   thumbnail_url: String
+// });
 
-const Photo = mongoose.model('photo', photoSchema);
+// const Photo = mongoose.model('photo', photoSchema);
 
-module.exports.FinalProduct = FinalProduct;
 module.exports.Product = Product;
 module.exports.Style = Style;
-module.exports.Sku = Sku;
-module.exports.Feature = Feature;
-module.exports.Photo = Photo;
+// module.exports.Sku = Sku;
+// module.exports.Feature = Feature;
+// module.exports.Photo = Photo;
