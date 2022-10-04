@@ -13,7 +13,6 @@ app.get('/products', (req, res) => {
 
 app.get('/products/:product_id', (req, res) => {
   controller.getProduct(req, res);
-  res.status(200).send('product info for id with features array');
 });
 
 app.get('/products/:product_id/styles', (req, res) => {
@@ -23,7 +22,6 @@ app.get('/products/:product_id/styles', (req, res) => {
 
 app.get('/products/:product_id/related', (req, res) => {
   controller.getRelated(req, res);
-  res.status(200).send('array of product id related to input product id');
 });
 
 app.get('/cart', (req, res) => {

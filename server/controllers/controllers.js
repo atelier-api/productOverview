@@ -9,7 +9,13 @@ exports.getProducts = (req, res) => {
 
 exports.getProduct = (req, res) => {
   // get one product info according to id, with no styles
-  db.getProduct(req.params.product_id);
+  db.getProduct(req.params.product_id)
+    .then(result => {
+      res.status(200).send(result);
+    })
+    .catch(err => {
+      res.status(400).send(err);
+    });
 };
 
 exports.getProductStyle = (req, res) => {
@@ -18,6 +24,13 @@ exports.getProductStyle = (req, res) => {
 
 exports.getRelated = (req, res) => {
   // get array of related products id
+  db.getRelated(req.params.product_id)
+    .then(result => {
+      res.status(200).send(result);
+    })
+    .catch(err => {
+      res.status(400).send(err);
+    });
 };
 
 exports.getCart = (req, res) => {
