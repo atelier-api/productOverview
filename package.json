@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "npx nodemon --watch server server/index.js"
+    "start": "npx nodemon --watch server server/index.js",
+    "loadmongo": "mongoimport --db SDC --collection products --drop --type=csv --headerline --file Data/product.csv && mongoimport --db SDC --collection styles --drop --type=csv --headerline --file Data/styles.csv && mongoimport --db SDC --collection skus --drop --type=csv --headerline --file Data/skus.csv && mongoimport --db SDC --collection features --drop --type=csv --headerline --file Data/features.csv && mongoimport --db SDC --collection photos --drop --type=csv --headerline --file Data/photos.csv && node db/loadMongo.js"
   },
   "repository": {
     "type": "git",

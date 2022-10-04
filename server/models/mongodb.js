@@ -1,24 +1,21 @@
-import mongoose from 'mongoose';
+const { Product, Style } = require('../../db/mongodb.js');
 
-const { Schema } = mongoose;
+exports.getProduct = (id) => {
+  return Product.findOne({id}).select('-_id id name slogan description category default_price features');
+};
 
-const productSchema = new Schema({
-  id: Number,
-  name: String,
-  slogan: String,
-  description: String,
-  category: String,
-  default_price: String,
-  features: [{feature: String, value: String}],
-  styles: [{
-    style_id: Number,
-    name: String,
-    original_price: String,
-    sale_price: String,
-    default?: Boolean,
-    photos: [{thumbnail_url: String, url: String}],
-    skus: Object
-  }]
-});
+exports.getStyle = (id) => {
 
-const product = mongoose.model('product', productSchema);
+};
+
+exports.getRelated = (id) => {
+  return Product.findOne({id}).select('-_id related')
+    .then(product => {
+      let result = [];
+      let { related } = JSON.parse(JSON.stringify(product));
+      related.forEach(item => {
+        result.push(item.related_product_id);
+      })
+      return result;
+    });
+}

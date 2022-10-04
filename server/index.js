@@ -6,8 +6,8 @@ const PORT = process.env.PORT || 3000;
 
 const start = (port) => {
   try {
-    app.listen(PORT);
-    console.log(`Server listening at http://localhost:${PORT}`);
+    app.listen(port);
+    console.log(`Server listening at http://localhost:${port}`);
   } catch (err) {
     console.log(err);
     process.exit();
