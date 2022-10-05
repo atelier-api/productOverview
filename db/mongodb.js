@@ -28,6 +28,13 @@ const styleSchema = new mongoose.Schema({
 
 const Style = mongoose.model('style', styleSchema);
 
+const cartSchema = new mongoose.Schema({
+  sku_id: Number,
+  count: Number
+})
+
+const Cart = mongoose.model('cart', cartSchema);
+
 // const skuSchema = new mongoose.Schema({
 //   id: String,
 //   styleId: Number,
@@ -57,6 +64,7 @@ const Style = mongoose.model('style', styleSchema);
 
 module.exports.Product = Product;
 module.exports.Style = Style;
+module.exports.Cart = Cart;
 // module.exports.Sku = Sku;
 // module.exports.Feature = Feature;
 // module.exports.Photo = Photo;
