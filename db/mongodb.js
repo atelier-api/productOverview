@@ -15,25 +15,25 @@ const productSchema = new mongoose.Schema({
 
 const Product = mongoose.model('product', productSchema);
 
-const styleSchema = new mongoose.Schema({
-  id: Number,
-  productId: Number,
-  name: String,
-  sale_price: String,
-  original_price: String,
-  default_style: Boolean,
-  skus: [Object],
-  photos: [Object]
-})
+// const styleSchema = new mongoose.Schema({
+//   id: Number,
+//   productId: Number,
+//   name: String,
+//   sale_price: String,
+//   original_price: String,
+//   default_style: Boolean,
+//   skus: [Object],
+//   photos: [Object]
+// })
 
-const Style = mongoose.model('style', styleSchema);
+// const Style = mongoose.model('style', styleSchema);
 
-const cartSchema = new mongoose.Schema({
-  sku_id: Number,
-  count: Number
-})
+// const cartSchema = new mongoose.Schema({
+//   sku_id: Number,
+//   count: Number
+// })
 
-const Cart = mongoose.model('cart', cartSchema);
+// const Cart = mongoose.model('cart', cartSchema);
 
 // const skuSchema = new mongoose.Schema({
 //   id: String,
@@ -63,8 +63,8 @@ const Cart = mongoose.model('cart', cartSchema);
 // const Photo = mongoose.model('photo', photoSchema);
 
 module.exports.Product = Product;
-module.exports.Style = Style;
-module.exports.Cart = Cart;
+// module.exports.Style = Style;
+// module.exports.Cart = Cart;
 // module.exports.Sku = Sku;
 // module.exports.Feature = Feature;
 // module.exports.Photo = Photo;

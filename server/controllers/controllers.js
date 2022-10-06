@@ -5,19 +5,19 @@ const db = require(`../models/${process.env.DATABASE}.js`);
 
 exports.getProducts = (req, res) => {
   // get array of products with general info
-  if (req.params.page === undefined) {
-    req.params.page = "1";
+  if (req.query.page === undefined) {
+    req.query.page = "1";
   }
-  if (req.params.count === undefined) {
-    req.params.count = "5";
+  if (req.query.count === undefined) {
+    req.query.count = "5";
   }
-  let page = parseInt(req.params.page);
-  let count = parseInt(req.params.count);
-  if (isNaN(page) || isNaN(count)) {
+  let page = parseInt(req.query.page);
+  let count = parseInt(req.query.count);
+  if (isNaN(page) || isNaN(count) || page < 1 || count < 1) {
     res.status(400).send('invalid params');
     return;
   }
-  db.getProducts(req.params.page, req.params.count)
+  db.getProducts(page, count)
     .then(result => {
       res.status(200).send(result);
     })
@@ -86,33 +86,33 @@ exports.getRelated = (req, res) => {
     });
 };
 
-exports.getCart = (req, res) => {
-  // get all cart skus and quantities
-  db.getCart()
-    .then(result => {
-      res.status(200).send(result);
-    })
-    .catch(err => {
-      res.status(500).send(err);
-    });
-};
+// exports.getCart = (req, res) => {
+//   // get all cart skus and quantities
+//   db.getCart()
+//     .then(result => {
+//       res.status(200).send(result);
+//     })
+//     .catch(err => {
+//       res.status(500).send(err);
+//     });
+// };
 
-exports.postCart = (req, res) => {
-  // increment count in cart for sku_id
-  if (req.body.sku_id === undefined) {
-    res.status(400).send("missing sku_id");
-    return;
-  }
-  let skuId = parseInt(req.body.sku_id);
-  if (isNaN(skuId)) {
-    res.status(400).send("invalid sku_id");
-    return;
-  }
-  db.postCart(req.body.sku_id)
-    .then(() => {
-      res.status(201).send('CREATED');
-    })
-    .catch(err => {
-      res.status(500).send(err);
-    });
-};
+// exports.postCart = (req, res) => {
+//   // increment count in cart for sku_id
+//   if (req.body.sku_id === undefined) {
+//     res.status(400).send("missing sku_id");
+//     return;
+//   }
+//   let skuId = parseInt(req.body.sku_id);
+//   if (isNaN(skuId)) {
+//     res.status(400).send("invalid sku_id");
+//     return;
+//   }
+//   db.postCart(req.body.sku_id)
+//     .then(() => {
+//       res.status(201).send('CREATED');
+//     })
+//     .catch(err => {
+//       res.status(500).send(err);
+//     });
+// };

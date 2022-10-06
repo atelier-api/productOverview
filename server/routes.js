@@ -22,12 +22,12 @@ app.get('/products/:product_id/related', (req, res) => {
   controller.getRelated(req, res);
 });
 
-app.get('/cart', (req, res) => {
-  controller.getCart(req, res);
-});
+// app.get('/cart', (req, res) => {
+//   controller.getCart(req, res);
+// });
 
-app.post('/cart', (req, res) => {
-  controller.postCart(req, res);
-});
+// app.post('/cart', (req, res) => {
+//   controller.postCart(req, res);
+// });
 
 module.exports = app;
