@@ -8,7 +8,6 @@ app.use(express.json());
 
 app.get('/products', (req, res) => {
   controller.getProducts(req, res);
-  res.status(200).send('array of related products id');
 });
 
 app.get('/products/:product_id', (req, res) => {
@@ -17,21 +16,18 @@ app.get('/products/:product_id', (req, res) => {
 
 app.get('/products/:product_id/styles', (req, res) => {
   controller.getProductStyle(req, res);
-  res.status(200).send('product id, array of styles with photos and skus in result');
 });
 
 app.get('/products/:product_id/related', (req, res) => {
   controller.getRelated(req, res);
 });
 
-app.get('/cart', (req, res) => {
-  controller.getCart(req, res);
-  res.status(200).send('array of { sku_id, count }');
-});
+// app.get('/cart', (req, res) => {
+//   controller.getCart(req, res);
+// });
 
-app.post('/cart', (req, res) => {
-  controller.postCart(req, res);
-  res.status(201).send('CREATED');
-});
+// app.post('/cart', (req, res) => {
+//   controller.postCart(req, res);
+// });
 
 module.exports = app;

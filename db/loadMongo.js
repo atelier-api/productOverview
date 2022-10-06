@@ -23,7 +23,7 @@ const createIndexs = async () => {
 
 
 const loadStyles = async () => {
-  console.log('start load styles');
+  console.log('start loading styles');
   const agg = [
     {
       '$lookup': {
@@ -59,7 +59,7 @@ const loadStyles = async () => {
 };
 
 const loadProducts = async () => {
-  console.log('start to load products');
+  console.log('start loading products');
   const agg = [
     {
       '$lookup': {
