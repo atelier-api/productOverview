@@ -1,7 +1,7 @@
 const { Product } = require('../../db/mongodb.js');
 
 exports.getProducts = (page, count) => {
-  return Product.find().select('-id id name slogan description category default_price').limit(count).skip(count * (page - 1));
+  return Product.find().select('-_id id name slogan description category default_price').limit(count).skip(count * (page - 1));
 }
 
 exports.getProduct = (id) => {
