@@ -85,34 +85,3 @@ exports.getRelated = (req, res) => {
       res.status(500).send(err);
     });
 };
-
-// exports.getCart = (req, res) => {
-//   // get all cart skus and quantities
-//   db.getCart()
-//     .then(result => {
-//       res.status(200).send(result);
-//     })
-//     .catch(err => {
-//       res.status(500).send(err);
-//     });
-// };
-
-// exports.postCart = (req, res) => {
-//   // increment count in cart for sku_id
-//   if (req.body.sku_id === undefined) {
-//     res.status(400).send("missing sku_id");
-//     return;
-//   }
-//   let skuId = parseInt(req.body.sku_id);
-//   if (isNaN(skuId)) {
-//     res.status(400).send("invalid sku_id");
-//     return;
-//   }
-//   db.postCart(req.body.sku_id)
-//     .then(() => {
-//       res.status(201).send('CREATED');
-//     })
-//     .catch(err => {
-//       res.status(500).send(err);
-//     });
-// };
