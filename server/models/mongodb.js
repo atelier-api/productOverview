@@ -1,7 +1,7 @@
 const { Product } = require('../../db/mongodb.js');
 
 exports.getProducts = (page, count) => {
-  return Product.find().select('-id id name slogan description category default_price').limit(count).skip(count * (page - 1));
+  return Product.find().select('-_id id name slogan description category default_price').limit(count).skip(count * (page - 1));
 }
 
 exports.getProduct = (id) => {
@@ -53,22 +53,3 @@ exports.getRelated = (id) => {
       return result;
     });
 };
-
-// exports.getCart = () => {
-//   return Cart.find().select('-_id sku_id count');
-// }
-
-// exports.postCart = (sku_id) => {
-//   return Cart.findOne({sku_id})
-//           .then(result => {
-//             if (result === null) {
-//               return Cart.create({ sku_id, "count": 1});
-//             } else {
-//               if (result.count === undefined) {
-//                 result.count = 1;
-//               }
-//               result.count += 1;
-//               return result.save();
-//             }
-//           });
-// }
