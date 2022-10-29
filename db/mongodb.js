@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 require("dotenv").config();
 
+const ip = process.env.DBIP || "127.0.0.1";
+const port = process.env.DBPORT || "27017";
 
-mongoose.connect(`mongodb://${process.env.DBIP}:${process.env.DBPORT}/SDC`);
+mongoose.connect(`mongodb://${ip}:${port}/SDC`);
 
 const productSchema = new mongoose.Schema({
   id: Number,
