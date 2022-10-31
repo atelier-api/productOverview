@@ -22,8 +22,8 @@ app.get('/products/:product_id/related', (req, res) => {
   controller.getRelated(req, res);
 });
 
-app.get('/loaderio-6bbc01a82c29c9ab1c28a38fadda9da0', (req, res) => {
-  res.send('loaderio-6bbc01a82c29c9ab1c28a38fadda9da0');
+app.get('/loaderio-2a87180d288cc2f70f12700046df4010', (req, res) => {
+  res.send('loaderio-2a87180d288cc2f70f12700046df4010');
 })
 
 module.exports = app;
