@@ -1,6 +1,9 @@
 const express = require('express');
 const controller = require('./controllers/controllers');
 // const authentication = require('./middleware/authentication');
+require("dotenv").config();
+
+const loaderioString = process.env.LOADERSTRING;
 
 const app = express();
 
@@ -22,8 +25,8 @@ app.get('/products/:product_id/related', (req, res) => {
   controller.getRelated(req, res);
 });
 
-app.get('/loaderio-2a87180d288cc2f70f12700046df4010', (req, res) => {
-  res.send('loaderio-2a87180d288cc2f70f12700046df4010');
+app.get(`/${loaderioString}`, (req, res) => {
+  res.send(loaderioString);
 })
 
 module.exports = app;
